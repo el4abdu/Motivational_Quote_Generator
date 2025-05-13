@@ -447,6 +447,41 @@ document.addEventListener('DOMContentLoaded', function() {
           { quote: "Croyez que vous pouvez et vous êtes à mi-chemin.", author: "Theodore Roosevelt" },
           { quote: "La seule limite à notre épanouissement de demain sera nos doutes d'aujourd'hui.", author: "Franklin D. Roosevelt" }
         ],
+        de: [
+          { quote: "Die Reise von tausend Meilen beginnt mit einem einzigen Schritt.", author: "Lao Tzu" },
+          { quote: "Erfolg ist nicht endgültig, Misserfolg ist nicht tödlich: Es ist der Mut weiterzumachen, der zählt.", author: "Winston Churchill" },
+          { quote: "Der beste Weg, die Zukunft vorherzusagen, ist, sie zu erschaffen.", author: "Peter Drucker" },
+          { quote: "Glaube, dass du kannst, und du bist schon halb am Ziel.", author: "Theodore Roosevelt" },
+          { quote: "Die einzige Grenze für unsere Verwirklichung von morgen werden unsere Zweifel von heute sein.", author: "Franklin D. Roosevelt" }
+        ],
+        es: [
+          { quote: "El viaje de mil millas comienza con un solo paso.", author: "Lao Tzu" },
+          { quote: "El éxito no es definitivo, el fracaso no es fatal: es el coraje de continuar lo que cuenta.", author: "Winston Churchill" },
+          { quote: "La mejor manera de predecir el futuro es crearlo.", author: "Peter Drucker" },
+          { quote: "Cree que puedes y ya estás a medio camino.", author: "Theodore Roosevelt" },
+          { quote: "El único límite para nuestra realización del mañana serán nuestras dudas de hoy.", author: "Franklin D. Roosevelt" }
+        ],
+        it: [
+          { quote: "Il viaggio di mille miglia inizia con un solo passo.", author: "Lao Tzu" },
+          { quote: "Il successo non è definitivo, il fallimento non è fatale: è il coraggio di continuare che conta.", author: "Winston Churchill" },
+          { quote: "Il modo migliore per prevedere il futuro è crearlo.", author: "Peter Drucker" },
+          { quote: "Credi di poterlo fare e sei già a metà strada.", author: "Theodore Roosevelt" },
+          { quote: "L'unico limite alla nostra realizzazione di domani saranno i nostri dubbi di oggi.", author: "Franklin D. Roosevelt" }
+        ],
+        pt: [
+          { quote: "A jornada de mil milhas começa com um único passo.", author: "Lao Tzu" },
+          { quote: "O sucesso não é final, o fracasso não é fatal: é a coragem de continuar que conta.", author: "Winston Churchill" },
+          { quote: "A melhor maneira de prever o futuro é criá-lo.", author: "Peter Drucker" },
+          { quote: "Acredite que você pode e você já está no meio do caminho.", author: "Theodore Roosevelt" },
+          { quote: "O único limite para nossa realização de amanhã serão nossas dúvidas de hoje.", author: "Franklin D. Roosevelt" }
+        ],
+        nl: [
+          { quote: "De reis van duizend mijl begint met één stap.", author: "Lao Tzu" },
+          { quote: "Succes is niet definitief, mislukking is niet fataal: het is de moed om door te gaan die telt.", author: "Winston Churchill" },
+          { quote: "De beste manier om de toekomst te voorspellen is door deze te creëren.", author: "Peter Drucker" },
+          { quote: "Geloof dat je het kunt en je bent al halverwege.", author: "Theodore Roosevelt" },
+          { quote: "De enige grens aan onze verwezenlijking van morgen zullen onze twijfels van vandaag zijn.", author: "Franklin D. Roosevelt" }
+        ],
         ar: [
           { quote: "رحلة الألف ميل تبدأ بخطوة واحدة.", author: "لاو تزو" },
           { quote: "النجاح ليس نهائياً، والفشل ليس قاتلاً: ما يهم هو الشجاعة للاستمرار.", author: "وينستون تشرشل" },
@@ -473,15 +508,8 @@ document.addEventListener('DOMContentLoaded', function() {
         throw new Error("Invalid quote selected");
       }
       
-      // Add AI tag based on language
-      let authorWithAI = selectedQuote.author || "Unknown";
-      if (selectedLanguage === 'fr') {
-        authorWithAI += " (Généré par IA)";
-      } else if (selectedLanguage === 'ar') {
-        authorWithAI += " (تم إنشاؤه بواسطة الذكاء الاصطناعي)";
-      } else {
-        authorWithAI += " (AI Generated)";
-      }
+      // Use author name as is, without adding AI Generated text
+      const author = selectedQuote.author || "Unknown";
       
       // Create categories array
       const categories = selectedCategory ? 
@@ -491,7 +519,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Save the AI-generated quote
       const newQuote = {
         text: selectedQuote.quote,
-        author: authorWithAI,
+        author: author,
         categories: categories,
         language: selectedLanguage
       };
@@ -517,9 +545,14 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Fallback to a basic quote for the selected language
       const fallbackQuotes = {
-        en: { text: "Every moment is a fresh beginning.", author: "T.S. Eliot (Fallback AI Generated)" },
-        fr: { text: "Chaque moment est un nouveau départ.", author: "T.S. Eliot (Généré par IA - Solution de secours)" },
-        ar: { text: "كل لحظة هي بداية جديدة.", author: "تي. إس. إليوت (تم إنشاؤه بواسطة الذكاء الاصطناعي - احتياطي)" }
+        en: { text: "Every moment is a fresh beginning.", author: "T.S. Eliot" },
+        fr: { text: "Chaque moment est un nouveau départ.", author: "T.S. Eliot" },
+        de: { text: "Jeder Moment ist ein neuer Anfang.", author: "T.S. Eliot" },
+        es: { text: "Cada momento es un nuevo comienzo.", author: "T.S. Eliot" },
+        it: { text: "Ogni momento è un nuovo inizio.", author: "T.S. Eliot" },
+        pt: { text: "Cada momento é um novo começo.", author: "T.S. Eliot" },
+        nl: { text: "Elk moment is een nieuw begin.", author: "T.S. Eliot" },
+        ar: { text: "كل لحظة هي بداية جديدة.", author: "تي. إس. إليوت" }
       };
       
       const fallbackQuote = fallbackQuotes[selectedLanguage] || fallbackQuotes.en;
