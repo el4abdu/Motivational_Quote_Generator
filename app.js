@@ -429,79 +429,212 @@ document.addEventListener('DOMContentLoaded', function() {
     
     try {
       // Simulate loading delay for realistic effect
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Local AI-inspired quotes for each language
+      // Expanded collection of quotes by language
       const localQuotesByLanguage = {
         en: [
           { quote: "The journey of a thousand miles begins with a single step.", author: "Lao Tzu" },
           { quote: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
           { quote: "The best way to predict the future is to create it.", author: "Peter Drucker" },
           { quote: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
-          { quote: "The only limit to our realization of tomorrow will be our doubts of today.", author: "Franklin D. Roosevelt" }
+          { quote: "The only limit to our realization of tomorrow will be our doubts of today.", author: "Franklin D. Roosevelt" },
+          { quote: "The harder you work for something, the greater you'll feel when you achieve it.", author: "Anonymous" },
+          { quote: "Don't watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
+          { quote: "Everything you've ever wanted is on the other side of fear.", author: "George Addair" },
+          { quote: "The only place where success comes before work is in the dictionary.", author: "Vidal Sassoon" },
+          { quote: "Your time is limited, don't waste it living someone else's life.", author: "Steve Jobs" },
+          { quote: "If you're going through hell, keep going.", author: "Winston Churchill" },
+          { quote: "Do what you can, with what you have, where you are.", author: "Theodore Roosevelt" },
+          { quote: "Strive not to be a success, but rather to be of value.", author: "Albert Einstein" },
+          { quote: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
+          { quote: "The secret to getting ahead is getting started.", author: "Mark Twain" }
         ],
         fr: [
           { quote: "Le voyage de mille lieues commence par un seul pas.", author: "Lao Tzu" },
           { quote: "Le succès n'est pas final, l'échec n'est pas fatal: c'est le courage de continuer qui compte.", author: "Winston Churchill" },
           { quote: "La meilleure façon de prédire l'avenir est de le créer.", author: "Peter Drucker" },
           { quote: "Croyez que vous pouvez et vous êtes à mi-chemin.", author: "Theodore Roosevelt" },
-          { quote: "La seule limite à notre épanouissement de demain sera nos doutes d'aujourd'hui.", author: "Franklin D. Roosevelt" }
+          { quote: "La seule limite à notre épanouissement de demain sera nos doutes d'aujourd'hui.", author: "Franklin D. Roosevelt" },
+          { quote: "Plus vous travaillez dur pour quelque chose, plus vous vous sentirez bien quand vous l'atteindrez.", author: "Anonyme" },
+          { quote: "Ne regardez pas l'horloge; faites ce qu'elle fait. Continuez d'avancer.", author: "Sam Levenson" },
+          { quote: "Tout ce que vous avez toujours voulu est de l'autre côté de la peur.", author: "George Addair" },
+          { quote: "Le seul endroit où le succès vient avant le travail est dans le dictionnaire.", author: "Vidal Sassoon" },
+          { quote: "Votre temps est limité, ne le gaspillez pas en vivant la vie de quelqu'un d'autre.", author: "Steve Jobs" },
+          { quote: "Si vous traversez l'enfer, continuez d'avancer.", author: "Winston Churchill" },
+          { quote: "Faites ce que vous pouvez, avec ce que vous avez, là où vous êtes.", author: "Theodore Roosevelt" },
+          { quote: "Ne cherchez pas à être un succès, mais plutôt à avoir de la valeur.", author: "Albert Einstein" },
+          { quote: "L'avenir appartient à ceux qui croient en la beauté de leurs rêves.", author: "Eleanor Roosevelt" },
+          { quote: "Le secret pour avancer est de commencer.", author: "Mark Twain" }
         ],
         de: [
           { quote: "Die Reise von tausend Meilen beginnt mit einem einzigen Schritt.", author: "Lao Tzu" },
           { quote: "Erfolg ist nicht endgültig, Misserfolg ist nicht tödlich: Es ist der Mut weiterzumachen, der zählt.", author: "Winston Churchill" },
           { quote: "Der beste Weg, die Zukunft vorherzusagen, ist, sie zu erschaffen.", author: "Peter Drucker" },
           { quote: "Glaube, dass du kannst, und du bist schon halb am Ziel.", author: "Theodore Roosevelt" },
-          { quote: "Die einzige Grenze für unsere Verwirklichung von morgen werden unsere Zweifel von heute sein.", author: "Franklin D. Roosevelt" }
+          { quote: "Die einzige Grenze für unsere Verwirklichung von morgen werden unsere Zweifel von heute sein.", author: "Franklin D. Roosevelt" },
+          { quote: "Je härter du für etwas arbeitest, desto besser wirst du dich fühlen, wenn du es erreichst.", author: "Anonym" },
+          { quote: "Schau nicht auf die Uhr; tue, was sie tut. Mach weiter.", author: "Sam Levenson" },
+          { quote: "Alles, was du je wolltest, liegt auf der anderen Seite der Angst.", author: "George Addair" },
+          { quote: "Der einzige Ort, an dem Erfolg vor Arbeit kommt, ist im Wörterbuch.", author: "Vidal Sassoon" },
+          { quote: "Deine Zeit ist begrenzt, verschwende sie nicht damit, das Leben eines anderen zu leben.", author: "Steve Jobs" },
+          { quote: "Wenn du durch die Hölle gehst, geh weiter.", author: "Winston Churchill" },
+          { quote: "Tu, was du kannst, mit dem, was du hast, dort, wo du bist.", author: "Theodore Roosevelt" },
+          { quote: "Streef er niet naar om succesvol te zijn, maar eerder om waardevol te zijn.", author: "Albert Einstein" },
+          { quote: "Die Zukunft gehört denen, die geloven in de schoonheid von ihren Träumen.", author: "Eleanor Roosevelt" },
+          { quote: "Das Geheimnis, voranzukommen, ist anzufangen.", author: "Mark Twain" }
         ],
         es: [
           { quote: "El viaje de mil millas comienza con un solo paso.", author: "Lao Tzu" },
           { quote: "El éxito no es definitivo, el fracaso no es fatal: es el coraje de continuar lo que cuenta.", author: "Winston Churchill" },
           { quote: "La mejor manera de predecir el futuro es crearlo.", author: "Peter Drucker" },
           { quote: "Cree que puedes y ya estás a medio camino.", author: "Theodore Roosevelt" },
-          { quote: "El único límite para nuestra realización del mañana serán nuestras dudas de hoy.", author: "Franklin D. Roosevelt" }
+          { quote: "El único límite para nuestra realización del mañana serán nuestras dudas de hoy.", author: "Franklin D. Roosevelt" },
+          { quote: "Cuanto más duro trabajas por algo, mejor te sentirás cuando lo logres.", author: "Anónimo" },
+          { quote: "No mires el reloj; haz lo que hace. Sigue adelante.", author: "Sam Levenson" },
+          { quote: "Todo lo que siempre has querido está al otro lado del miedo.", author: "George Addair" },
+          { quote: "El único lugar donde el éxito viene antes que el trabajo es en el diccionario.", author: "Vidal Sassoon" },
+          { quote: "Tu tiempo es limitado, no lo desperdicies viviendo la vida de otra persona.", author: "Steve Jobs" },
+          { quote: "Si estás pasando por el infierno, sigue adelante.", author: "Winston Churchill" },
+          { quote: "Haz lo que puedas, con lo que tengas, donde estés.", author: "Theodore Roosevelt" },
+          { quote: "No te esfuerces por ser un éxito, sino más bien por ser de valor.", author: "Albert Einstein" },
+          { quote: "El futuro pertenece a aquellos que creen en la belleza de sus sueños.", author: "Eleanor Roosevelt" },
+          { quote: "El secreto para avanzar es comenzar.", author: "Mark Twain" }
         ],
         it: [
           { quote: "Il viaggio di mille miglia inizia con un solo passo.", author: "Lao Tzu" },
           { quote: "Il successo non è definitivo, il fallimento non è fatale: è il coraggio di continuare che conta.", author: "Winston Churchill" },
           { quote: "Il modo migliore per prevedere il futuro è crearlo.", author: "Peter Drucker" },
           { quote: "Credi di poterlo fare e sei già a metà strada.", author: "Theodore Roosevelt" },
-          { quote: "L'unico limite alla nostra realizzazione di domani saranno i nostri dubbi di oggi.", author: "Franklin D. Roosevelt" }
+          { quote: "L'unico limite alla nostra realizzazione di domani saranno i nostri dubbi di oggi.", author: "Franklin D. Roosevelt" },
+          { quote: "Più duramente lavori per qualcosa, meglio ti sentirai quando lo raggiungerai.", author: "Anonimo" },
+          { quote: "Non guardare l'orologio; fai quello che fa lui. Continua ad andare avanti.", author: "Sam Levenson" },
+          { quote: "Tutto ciò che hai sempre desiderato è dall'altra parte della paura.", author: "George Addair" },
+          { quote: "L'unico posto dove il successo viene prima del lavoro è nel dizionario.", author: "Vidal Sassoon" },
+          { quote: "Il tuo tempo è limitato, non sprecarlo vivendo la vita di qualcun altro.", author: "Steve Jobs" },
+          { quote: "Se stai attraversando l'inferno, continua a camminare.", author: "Winston Churchill" },
+          { quote: "Fai ciò che puoi, con quello che hai, dove sei.", author: "Theodore Roosevelt" },
+          { quote: "Non sforzarti di avere successo, ma piuttosto di avere valore.", author: "Albert Einstein" },
+          { quote: "Il futuro appartiene a coloro che credono nella bellezza dei propri sogni.", author: "Eleanor Roosevelt" },
+          { quote: "Il segreto per andare avanti è iniziare.", author: "Mark Twain" }
         ],
         pt: [
           { quote: "A jornada de mil milhas começa com um único passo.", author: "Lao Tzu" },
           { quote: "O sucesso não é final, o fracasso não é fatal: é a coragem de continuar que conta.", author: "Winston Churchill" },
           { quote: "A melhor maneira de prever o futuro é criá-lo.", author: "Peter Drucker" },
           { quote: "Acredite que você pode e você já está no meio do caminho.", author: "Theodore Roosevelt" },
-          { quote: "O único limite para nossa realização de amanhã serão nossas dúvidas de hoje.", author: "Franklin D. Roosevelt" }
+          { quote: "O único limite para nossa realização de amanhã serão nossas dúvidas de hoje.", author: "Franklin D. Roosevelt" },
+          { quote: "Quanto mais você trabalha por algo, melhor você se sentirá quando alcançá-lo.", author: "Anônimo" },
+          { quote: "Não olhe para o relógio; faça o que ele faz. Continue indo.", author: "Sam Levenson" },
+          { quote: "Tudo o que você sempre quis está do outro lado do medo.", author: "George Addair" },
+          { quote: "O único lugar onde o sucesso vem antes do trabalho é no dicionário.", author: "Vidal Sassoon" },
+          { quote: "Seu tempo é limitado, não o desperdice vivendo a vida de outra pessoa.", author: "Steve Jobs" },
+          { quote: "Se você está passando pelo inferno, continue em frente.", author: "Winston Churchill" },
+          { quote: "Faça o que puder, com o que tiver, onde estiver.", author: "Theodore Roosevelt" },
+          { quote: "Não se esforce para ser um sucesso, mas sim para ser de valor.", author: "Albert Einstein" },
+          { quote: "O futuro pertence àqueles que acreditam na beleza de seus sonhos.", author: "Eleanor Roosevelt" },
+          { quote: "O segredo para avançar é começar.", author: "Mark Twain" }
         ],
         nl: [
           { quote: "De reis van duizend mijl begint met één stap.", author: "Lao Tzu" },
           { quote: "Succes is niet definitief, mislukking is niet fataal: het is de moed om door te gaan die telt.", author: "Winston Churchill" },
           { quote: "De beste manier om de toekomst te voorspellen is door deze te creëren.", author: "Peter Drucker" },
           { quote: "Geloof dat je het kunt en je bent al halverwege.", author: "Theodore Roosevelt" },
-          { quote: "De enige grens aan onze verwezenlijking van morgen zullen onze twijfels van vandaag zijn.", author: "Franklin D. Roosevelt" }
+          { quote: "De enige grens aan onze verwezenlijking van morgen zullen onze twijfels van vandaag zijn.", author: "Franklin D. Roosevelt" },
+          { quote: "Hoe harder je voor iets werkt, hoe beter je je zult voelen als je het bereikt.", author: "Anoniem" },
+          { quote: "Kijk niet naar de klok; doe wat hij doet. Blijf doorgaan.", author: "Sam Levenson" },
+          { quote: "Alles wat je ooit hebt gewild, ligt aan de andere kant van angst.", author: "George Addair" },
+          { quote: "De enige plaats waar succes voor werk komt, is in het woordenboek.", author: "Vidal Sassoon" },
+          { quote: "Je tijd is beperkt, verspil het niet door het leven van iemand anders te leven.", author: "Steve Jobs" },
+          { quote: "Als je door de hel gaat, blijf dan doorgaan.", author: "Winston Churchill" },
+          { quote: "Doe wat je kunt, met wat je hebt, waar je bent.", author: "Theodore Roosevelt" },
+          { quote: "Streef er niet naar om succesvol te zijn, maar eerder om waardevol te zijn.", author: "Albert Einstein" },
+          { quote: "De toekomst behoort toe aan hen die geloven in de schoonheid van hun dromen.", author: "Eleanor Roosevelt" },
+          { quote: "Het geheim om vooruit te komen is om te beginnen.", author: "Mark Twain" }
         ],
         ar: [
           { quote: "رحلة الألف ميل تبدأ بخطوة واحدة.", author: "لاو تزو" },
           { quote: "النجاح ليس نهائياً، والفشل ليس قاتلاً: ما يهم هو الشجاعة للاستمرار.", author: "وينستون تشرشل" },
           { quote: "أفضل طريقة للتنبؤ بالمستقبل هي صنعه.", author: "بيتر دراكر" },
           { quote: "آمن أنك تستطيع وتكون قد قطعت نصف الطريق.", author: "ثيودور روزفلت" },
-          { quote: "الحدود الوحيدة لتحقيق أحلامنا غداً هي شكوكنا اليوم.", author: "فرانكلين د. روزفلت" }
+          { quote: "الحدود الوحيدة لتحقيق أحلامنا غداً هي شكوكنا اليوم.", author: "فرانكلين د. روزفلت" },
+          { quote: "كلما عملت بجدية من أجل شيء ما، كلما شعرت بشعور أفضل عندما تحققه.", author: "مجهول" },
+          { quote: "لا تراقب الساعة؛ افعل ما تفعله. استمر في المضي قدمًا.", author: "سام ليفينسون" },
+          { quote: "كل ما أردته دائمًا موجود على الجانب الآخر من الخوف.", author: "جورج أدير" },
+          { quote: "المكان الوحيد الذي يأتي فيه النجاح قبل العمل هو في القاموس.", author: "فيدال ساسون" },
+          { quote: "وقتك محدود، فلا تضيعه في عيش حياة شخص آخر.", author: "ستيف جوبز" },
+          { quote: "إذا كنت تمر بالجحيم، فاستمر في السير.", author: "وينستون تشرشل" },
+          { quote: "افعل ما تستطيع، بما لديك، حيث أنت.", author: "ثيودور روزفلت" },
+          { quote: "لا تسعى لأن تكون ناجحًا، بل بالأحرى أن تكون ذا قيمة.", author: "ألبرت أينشتاين" },
+          { quote: "المستقبل ينتمي لأولئك الذين يؤمنون بجمال أحلامهم.", author: "إليانور روزفلت" },
+          { quote: "سر التقدم هو البدء.", author: "مارك توين" }
         ]
       };
       
-      // Select quotes for the chosen language, or fall back to English
-      const quotesForLanguage = localQuotesByLanguage[selectedLanguage] || localQuotesByLanguage.en;
+      // Category-specific quotes
+      const categoryQuotes = {
+        success: {
+          en: [
+            { quote: "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.", author: "Albert Schweitzer" },
+            { quote: "Success is walking from failure to failure with no loss of enthusiasm.", author: "Winston Churchill" },
+            { quote: "The road to success and the road to failure are almost exactly the same.", author: "Colin R. Davis" }
+          ],
+          fr: [
+            { quote: "Le succès n'est pas la clé du bonheur. Le bonheur est la clé du succès. Si vous aimez ce que vous faites, vous réussirez.", author: "Albert Schweitzer" },
+            { quote: "Le succès, c'est d'aller d'échec en échec sans perdre son enthousiasme.", author: "Winston Churchill" },
+            { quote: "Le chemin vers le succès et le chemin vers l'échec sont presque exactement les mêmes.", author: "Colin R. Davis" }
+          ],
+          de: [
+            { quote: "Erfolg ist nicht der Schlüssel zum Glück. Glück ist der Schlüssel zum Erfolg. Wenn du liebst, was du tust, wirst du erfolgreich sein.", author: "Albert Schweitzer" },
+            { quote: "Erfolg bedeutet, von Misserfolg zu Misserfolg zu gehen, ohne die Begeisterung zu verlieren.", author: "Winston Churchill" },
+            { quote: "Der Weg zum Erfolg und der Weg zum Scheitern sind fast genau dieselben.", author: "Colin R. Davis" }
+          ]
+        },
+        motivation: {
+          en: [
+            { quote: "When you arise in the morning, think of what a precious privilege it is to be alive - to breathe, to think, to enjoy, to love.", author: "Marcus Aurelius" },
+            { quote: "You are never too old to set another goal or to dream a new dream.", author: "C.S. Lewis" },
+            { quote: "The only way to do great work is to love what you do.", author: "Steve Jobs" }
+          ],
+          fr: [
+            { quote: "Quand vous vous levez le matin, pensez au privilège précieux que c'est d'être en vie - de respirer, de penser, de profiter, d'aimer.", author: "Marc Aurèle" },
+            { quote: "Vous n'êtes jamais trop vieux pour vous fixer un autre objectif ou pour rêver un nouveau rêve.", author: "C.S. Lewis" },
+            { quote: "La seule façon de faire du bon travail est d'aimer ce que vous faites.", author: "Steve Jobs" }
+          ],
+          de: [
+            { quote: "Wenn du am Morgen aufstehst, denke daran, was für ein kostbares Privileg es ist, am Leben zu sein - zu atmen, zu denken, zu genießen, zu lieben.", author: "Marcus Aurelius" },
+            { quote: "Man ist nie zu alt, um sich ein neues Ziel zu setzen oder einen neuen Traum zu träumen.", author: "C.S. Lewis" },
+            { quote: "Der einzige Weg, großartige Arbeit zu leisten, ist zu lieben, was man tut.", author: "Steve Jobs" }
+          ]
+        }
+      };
+      
+      let quotesToUse = localQuotesByLanguage[selectedLanguage] || localQuotesByLanguage.en;
+      
+      // If a category is selected and we have quotes for that category, add them to the mix
+      if (selectedCategory && categoryQuotes[selectedCategory.toLowerCase()]) {
+        const langCategoryQuotes = categoryQuotes[selectedCategory.toLowerCase()][selectedLanguage] ||
+                                  categoryQuotes[selectedCategory.toLowerCase()].en;
+        
+        if (langCategoryQuotes) {
+          // Prioritize category-specific quotes (60% chance)
+          if (Math.random() < 0.6) {
+            quotesToUse = langCategoryQuotes;
+          } else {
+            // Add category quotes to the mix but still use general pool
+            quotesToUse = [...quotesToUse, ...langCategoryQuotes];
+          }
+        }
+      }
       
       // Ensure there are quotes available
-      if (!quotesForLanguage || quotesForLanguage.length === 0) {
+      if (!quotesToUse || quotesToUse.length === 0) {
         throw new Error("No quotes available for selected language");
       }
       
       // Pick a random quote
-      const randomIndex = Math.floor(Math.random() * quotesForLanguage.length);
-      const selectedQuote = quotesForLanguage[randomIndex];
+      const randomIndex = Math.floor(Math.random() * quotesToUse.length);
+      const selectedQuote = quotesToUse[randomIndex];
       
       // Ensure we have a valid quote
       if (!selectedQuote || !selectedQuote.quote) {
@@ -516,8 +649,12 @@ document.addEventListener('DOMContentLoaded', function() {
         [selectedCategory.toLowerCase()] : 
         ['motivation', 'inspiration'];
       
+      // Create dynamic quote ID
+      const quoteId = `quote_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+      
       // Save the AI-generated quote
       const newQuote = {
+        id: quoteId,
         text: selectedQuote.quote,
         author: author,
         categories: categories,
@@ -545,17 +682,52 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Fallback to a basic quote for the selected language
       const fallbackQuotes = {
-        en: { text: "Every moment is a fresh beginning.", author: "T.S. Eliot" },
-        fr: { text: "Chaque moment est un nouveau départ.", author: "T.S. Eliot" },
-        de: { text: "Jeder Moment ist ein neuer Anfang.", author: "T.S. Eliot" },
-        es: { text: "Cada momento es un nuevo comienzo.", author: "T.S. Eliot" },
-        it: { text: "Ogni momento è un nuovo inizio.", author: "T.S. Eliot" },
-        pt: { text: "Cada momento é um novo começo.", author: "T.S. Eliot" },
-        nl: { text: "Elk moment is een nieuw begin.", author: "T.S. Eliot" },
-        ar: { text: "كل لحظة هي بداية جديدة.", author: "تي. إس. إليوت" }
+        en: [
+          { text: "Every moment is a fresh beginning.", author: "T.S. Eliot" },
+          { text: "Never regret anything that made you smile.", author: "Mark Twain" },
+          { text: "Whatever you do, do it well.", author: "Walt Disney" }
+        ],
+        fr: [
+          { text: "Chaque moment est un nouveau départ.", author: "T.S. Eliot" },
+          { text: "Ne regrettez jamais ce qui vous a fait sourire.", author: "Mark Twain" },
+          { text: "Quoi que vous fassiez, faites-le bien.", author: "Walt Disney" }
+        ],
+        de: [
+          { text: "Jeder Moment ist ein neuer Anfang.", author: "T.S. Eliot" },
+          { text: "Bereue nie etwas, das dich zum Lächeln gebracht hat.", author: "Mark Twain" },
+          { text: "Was auch immer du tust, mach es gut.", author: "Walt Disney" }
+        ],
+        es: [
+          { text: "Cada momento es un nuevo comienzo.", author: "T.S. Eliot" },
+          { text: "Nunca te arrepientas de algo que te hizo sonreír.", author: "Mark Twain" },
+          { text: "Hagas lo que hagas, hazlo bien.", author: "Walt Disney" }
+        ],
+        it: [
+          { text: "Ogni momento è un nuovo inizio.", author: "T.S. Eliot" },
+          { text: "Non rimpiangere mai nulla che ti abbia fatto sorridere.", author: "Mark Twain" },
+          { text: "Qualunque cosa tu faccia, falla bene.", author: "Walt Disney" }
+        ],
+        pt: [
+          { text: "Cada momento é um novo começo.", author: "T.S. Eliot" },
+          { text: "Nunca se arrependa de algo que o fez sorrir.", author: "Mark Twain" },
+          { text: "O que quer que você faça, faça bem.", author: "Walt Disney" }
+        ],
+        nl: [
+          { text: "Elk moment is een nieuw begin.", author: "T.S. Eliot" },
+          { text: "Heb nooit spijt van iets dat je deed glimlachen.", author: "Mark Twain" },
+          { text: "Wat je ook doet, doe het goed.", author: "Walt Disney" }
+        ],
+        ar: [
+          { text: "كل لحظة هي بداية جديدة.", author: "تي. إس. إليوت" },
+          { text: "لا تندم أبدًا على شيء جعلك تبتسم.", author: "مارك توين" },
+          { text: "مهما فعلت، افعله جيدًا.", author: "والت ديزني" }
+        ]
       };
       
-      const fallbackQuote = fallbackQuotes[selectedLanguage] || fallbackQuotes.en;
+      const fallbackQuoteList = fallbackQuotes[selectedLanguage] || fallbackQuotes.en;
+      const fallbackIndex = Math.floor(Math.random() * fallbackQuoteList.length);
+      const fallbackQuote = fallbackQuoteList[fallbackIndex];
+      
       fallbackQuote.categories = selectedCategory ? [selectedCategory.toLowerCase()] : ['motivation', 'inspiration'];
       fallbackQuote.language = selectedLanguage;
       
