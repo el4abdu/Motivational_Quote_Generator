@@ -1,0 +1,9 @@
+{
+  "title": "Motivational Quote Generator",
+  "emoji": "✨",
+  "colorFrom": "blue",
+  "colorTo": "purple",
+  "sdk": "static",
+  "pinned": false,
+  "license": "mit"
+} 

@@ -1,0 +1,21 @@
+{
+  "name": "motivational-quote-generator",
+  "version": "1.0.0",
+  "description": "A web tool that generates random motivational or inspirational quotes",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx http-server ."
+  },
+  "keywords": [
+    "motivational",
+    "quotes",
+    "inspiration",
+    "web-app"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+} 
