@@ -307,8 +307,8 @@ document.addEventListener('DOMContentLoaded', function() {
         quoteText.textContent = safeQuote.text;
         quoteAuthor.textContent = `- ${safeQuote.author}`;
         
-        // Set language attribute for proper font rendering
-        // This ensures Arabic text uses Amiri font
+        // Keep language attribute for accessibility and RTL support
+        // But not needed for font styling anymore since we use Amiri for all text
         if (safeQuote.language === 'ar') {
           quoteText.setAttribute('lang', 'ar');
           quoteAuthor.setAttribute('lang', 'ar');

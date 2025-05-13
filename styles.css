@@ -17,34 +17,34 @@
 }
 
 body {
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-family: 'Amiri', serif;
   background-color: var(--bg-light);
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
   line-height: 1.7;
   color: var(--text-dark);
 }
 
-/* Arabic font styles */
-html[lang="ar"] {
+/* Apply Amiri font to all elements */
+button,
+input,
+select,
+textarea,
+.form-control,
+.btn,
+h1, h2, h3, h4, h5, h6,
+p {
   font-family: 'Amiri', serif;
 }
 
-html[lang="ar"] body,
-html[lang="ar"] button,
-html[lang="ar"] input,
-html[lang="ar"] select,
-html[lang="ar"] textarea,
-html[lang="ar"] .form-control,
-html[lang="ar"] .btn {
+/* Remove Arabic-specific styling since all text will use Amiri now */
+/* We'll keep this section but adjust to ensure consistent styling */
+#quote-text,
+#quote-author {
   font-family: 'Amiri', serif;
 }
 
-/* Apply Amiri font only to Arabic text regardless of UI language */
-.quote-container:lang(ar) #quote-text,
-.quote-container:lang(ar) #quote-author,
 [lang="ar"] #quote-text,
 [lang="ar"] #quote-author {
-  font-family: 'Amiri', serif !important;
   line-height: 1.8;
   font-size: 1.5rem;
 }
